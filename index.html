@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Management Trainee (HR) - Online Mock Test</title>
+<style>
+:root{--bg:#f4f7f9;--card:#fff;--ink:#1f2933;--mute:#66788a;--acc:#0b5d7a;--accbg:#e3f1f6;--line:#d5dde3;
+--ok:#1b8a4b;--okbg:#e3f5ea;--bad:#c0392b;--badbg:#fbe9e7;--mark:#7b4fd1;--warn:#b7791f}
+@media (prefers-color-scheme:dark){:root{--bg:#10171c;--card:#18222a;--ink:#e6edf2;--mute:#93a4b3;--acc:#59b8d6;--accbg:#173543;--line:#2b3a46;
+--ok:#4cc27f;--okbg:#14301f;--bad:#ef7b6e;--badbg:#3a1b17;--mark:#a78bfa;--warn:#e0b04c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+header.top{background:var(--acc);color:#fff;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (prefers-color-scheme:dark){header.top{color:#0b1216}}
+header.top h1{font-size:1.05rem;margin:0}
+.wrap{max-width:1050px;margin:0 auto;padding:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.hidden{display:none!important}
+h2{margin:0 0 8px;font-size:1.3rem}
+label{display:block;font-weight:600;margin:14px 0 4px}
+select{width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:1rem}
+.chk{display:flex;gap:8px;align-items:center;font-weight:500;margin-top:14px}
+.chk input{width:18px;height:18px}
+button{font:inherit;cursor:pointer}
+.btn{border:1px solid var(--acc);background:var(--acc);color:#fff;padding:10px 18px;border-radius:8px;font-weight:600}
+@media (prefers-color-scheme:dark){.btn{color:#0b1216}}
+.btn.ghost{background:transparent;color:var(--acc)}
+.btn.warn{border-color:var(--mark);background:transparent;color:var(--mark)}
+.btn.danger{border-color:var(--bad);background:var(--bad);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.big{padding:13px 26px;font-size:1.05rem;margin-top:20px}
+ul.rules{margin:10px 0 0;padding-left:20px;color:var(--mute)}
+.layout{display:grid;grid-template-columns:1fr 270px;gap:16px;align-items:start}
+@media (max-width:820px){.layout{grid-template-columns:1fr}}
+.meta{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;color:var(--mute);font-size:.9rem;margin-bottom:10px}
+.tag{background:var(--accbg);color:var(--acc);border-radius:999px;padding:2px 10px;font-size:.8rem;font-weight:600}
+.qtext{font-size:1.15rem;font-weight:600;margin:6px 0 16px}
+.opt{display:flex;width:100%;text-align:left;gap:12px;align-items:flex-start;border:1.5px solid var(--line);background:var(--card);color:var(--ink);padding:12px 14px;border-radius:10px;margin-bottom:10px}
+.opt:hover{border-color:var(--acc)}
+.opt .l{flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-weight:700;font-size:.85rem}
+.opt.sel{border-color:var(--acc);background:var(--accbg)}
+.opt.sel .l{background:var(--acc);border-color:var(--acc);color:#fff}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.ok .l{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--bad);background:var(--badbg)}
+.opt.no .l{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt.static{cursor:default}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.timer{font-variant-numeric:tabular-nums;font-weight:700;background:rgba(255,255,255,.2);padding:4px 12px;border-radius:8px}
+.timer.low{background:var(--bad);color:#fff}
+.pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:6px;max-height:340px;overflow:auto;padding:2px}
+.pal button{height:38px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-weight:600;font-size:.85rem;position:relative}
+.pal button.ans{background:var(--ok);border-color:var(--ok);color:#fff}
+.pal button.mk{border-color:var(--mark);box-shadow:inset 0 0 0 2px var(--mark)}
+.pal button.cur{outline:3px solid var(--acc);outline-offset:1px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.78rem;color:var(--mute);margin-top:12px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;border:1.5px solid var(--line);vertical-align:-2px;margin-right:4px}
+.legend .a{background:var(--ok);border-color:var(--ok)}.legend .m{border-color:var(--mark);box-shadow:inset 0 0 0 2px var(--mark)}
+.score{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.big-score{font-size:2.6rem;font-weight:800;color:var(--acc);line-height:1}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.stat{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 14px;min-width:100px}
+.stat b{display:block;font-size:1.25rem}
+table{width:100%;border-collapse:collapse;margin-top:12px;font-size:.92rem}
+th,td{padding:8px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--mute);font-weight:600}
+td.n,th.n{text-align:right}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;min-width:70px}
+.bar>div{height:100%;background:var(--ok)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 10px}
+.tabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;font-size:.9rem}
+.tabs button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+@media (prefers-color-scheme:dark){.tabs button.on{color:#0b1216}}
+.rq{margin-bottom:14px}
+.rq .qtext{font-size:1.02rem}
+.st{font-size:.8rem;font-weight:700;padding:2px 10px;border-radius:999px}
+.st.c{background:var(--okbg);color:var(--ok)}.st.w{background:var(--badbg);color:var(--bad)}.st.u{background:var(--accbg);color:var(--warn)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:grid;place-items:center;padding:16px;z-index:10}
+.modal .card{max-width:420px;width:100%}
+footer{color:var(--mute);text-align:center;font-size:.8rem;padding:14px}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Management Trainee (HR) &ndash; Online Mock Test</h1>
+  <div id="hdrRight" class="hidden" style="display:flex;gap:10px;align-items:center">
+    <span class="timer" id="timer">--:--</span>
+    <button class="btn ghost" style="background:#fff" id="hdrSubmit">Submit Test</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- START -->
+  <section id="start" class="card">
+    <h2>Start a test</h2>
+    <p style="color:var(--mute);margin:0">200 MCQs based on the 10-module syllabus. Pick the scope and settings, then begin.</p>
+    <label for="scope">Test scope</label>
+    <select id="scope"></select>
+    <label for="timed">Timer</label>
+    <select id="timed"><option value="1">Timed (45 seconds per question)</option><option value="0">Untimed (practice)</option></select>
+    <label for="neg">Negative marking</label>
+    <select id="neg"><option value="0">None (+1 correct, 0 wrong)</option><option value="0.25">1/4 mark deducted for each wrong answer</option><option value="0.3333333333">1/3 mark deducted for each wrong answer</option></select>
+    <div class="chk"><input type="checkbox" id="shuf" checked><label for="shuf" style="margin:0;font-weight:500">Shuffle question order (like a fresh paper)</label></div>
+    <ul class="rules">
+      <li>Click an option to select it, then press <b>Save &amp; Next</b>.</li>
+      <li>Use <b>Mark for Review</b> for doubtful questions; the palette shows your progress.</li>
+      <li>Keyboard: <b>A/B/C/D</b> or <b>1-4</b> to choose, <b>&larr; &rarr;</b> to move.</li>
+      <li>The test auto-submits when the timer ends. Results and correct answers appear after submission.</li>
+    </ul>
+    <button class="btn big" id="startBtn">Start Test</button>
+  </section>
+
+  <!-- TEST -->
+  <section id="test" class="hidden">
+    <div class="layout">
+      <div class="card">
+        <div class="meta"><span id="qno"></span><span class="tag" id="qmod"></span></div>
+        <div class="qtext" id="qtext"></div>
+        <div id="opts"></div>
+        <div class="actions">
+          <button class="btn ghost" id="prev">&larr; Previous</button>
+          <button class="btn warn" id="markBtn">Mark for Review</button>
+          <button class="btn ghost" id="clear">Clear Response</button>
+          <button class="btn" id="next" style="margin-left:auto">Save &amp; Next &rarr;</button>
+        </div>
+      </div>
+      <aside class="card">
+        <b>Question Palette</b>
+        <div class="pal" id="pal" style="margin-top:10px"></div>
+        <div class="legend"><span><i class="a"></i>Answered</span><span><i></i>Not answered</span><span><i class="m"></i>Marked</span></div>
+        <div style="margin-top:12px;font-size:.9rem;color:var(--mute)" id="counts"></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="result" class="hidden">
+    <div class="card">
+      <h2>Test Result</h2>
+      <div class="score"><div class="big-score" id="rScore"></div><div id="rPct" style="color:var(--mute)"></div></div>
+      <div class="stats" id="rStats"></div>
+      <table id="rTable"></table>
+      <div class="actions"><button class="btn" id="retake">Take another test</button></div>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <div id="review"></div>
+  </section>
+</div>
+
+<div id="modal" class="modal hidden"><div class="card">
+  <h2>Submit test?</h2>
+  <div id="mBody" style="color:var(--mute)"></div>
+  <div class="actions"><button class="btn ghost" id="mNo">Go back</button><button class="btn danger" id="mYes">Submit</button></div>
+</div></div>
+
+<footer>Practice paper for self-study. Labour-law answers follow the individual Acts named in the syllabus.</footer>
+
+<script>
+const MODS = ["MI - Principles of Management & Organisational Behaviour", "MII - Human Resource Management", "MIII - Performance Management, Training & Career Development", "MIV - Compensation & Benefits Management", "MV - Industrial Relations & Labour Laws", "MVI - Strategic Human Resource Management", "MVII - HR Analytics & Human Resource Information Systems", "MVIII - Managerial Economics, Accounting & Financial Management", "MIX - Quantitative Techniques, Operations Research & Business Research", "MX - Marketing, Entrepreneurship, Governance, Ethics & Business Environment"];
+const Q = [{"m": 0, "q": "Who is regarded as the father of Scientific Management?", "o": ["Max Weber", "Elton Mayo", "Henri Fayol", "F.W. Taylor"], "a": 3}, {"m": 0, "q": "Fayol's 'unity of command' means an employee should receive orders from", "o": ["only one superior", "the trade union", "any available manager", "two or more superiors"], "a": 0}, {"m": 0, "q": "Henri Fayol identified how many principles of management?", "o": ["14", "10", "12", "16"], "a": 0}, {"m": 0, "q": "The Hawthorne Studies were conducted by", "o": ["Max Weber", "Henri Fayol", "Elton Mayo", "F.W. Taylor"], "a": 2}, {"m": 0, "q": "Bureaucratic management is associated with", "o": ["Peter Drucker", "Chester Barnard", "Elton Mayo", "Max Weber"], "a": 3}, {"m": 0, "q": "Which of the following is NOT a Big Five personality trait?", "o": ["Conscientiousness", "Openness", "Intuition", "Neuroticism"], "a": 2}, {"m": 0, "q": "Classical conditioning is associated with", "o": ["Edward Thorndike", "B.F. Skinner", "Ivan Pavlov", "Albert Bandura"], "a": 2}, {"m": 0, "q": "Operant conditioning, based on the consequences of behaviour, was propounded by", "o": ["B.F. Skinner", "Kurt Lewin", "Ivan Pavlov", "Abraham Maslow"], "a": 0}, {"m": 0, "q": "The highest level in Maslow's hierarchy of needs is", "o": ["Esteem", "Self-actualisation", "Safety", "Social"], "a": 1}, {"m": 0, "q": "In Herzberg's Two-Factor Theory, which of the following is a motivator?", "o": ["Working conditions", "Salary", "Achievement", "Company policy"], "a": 2}, {"m": 0, "q": "McClelland's Theory of Needs includes need for achievement, affiliation and", "o": ["status", "power", "security", "survival"], "a": 1}, {"m": 0, "q": "In Vroom's Expectancy Theory, 'instrumentality' is the belief that", "o": ["the manager is fair", "effort will lead to performance", "performance will lead to a reward", "the reward is attractive"], "a": 2}, {"m": 0, "q": "Equity Theory of motivation was proposed by", "o": ["J. Stacy Adams", "David McClelland", "Victor Vroom", "Edwin Locke"], "a": 0}, {"m": 0, "q": "Goal-Setting Theory is associated with", "o": ["Douglas McGregor", "Fred Fiedler", "J. Stacy Adams", "Edwin Locke"], "a": 3}, {"m": 0, "q": "Fiedler's Contingency Model measures leadership style using the", "o": ["Bogardus scale", "Guttman scale", "Likert scale", "Least Preferred Co-worker (LPC) scale"], "a": 3}, {"m": 0, "q": "In the Managerial Grid of Blake and Mouton, the 9,9 style is called", "o": ["Team management", "Impoverished management", "Country club management", "Authority-compliance"], "a": 0}, {"m": 0, "q": "In Tuckman's model, the stage immediately after 'Storming' is", "o": ["Norming", "Forming", "Performing", "Adjourning"], "a": 0}, {"m": 0, "q": "In the Johari Window, the area known to others but not to oneself is the", "o": ["Open area", "Unknown area", "Hidden area", "Blind area"], "a": 3}, {"m": 0, "q": "In the Thomas-Kilmann model, the mode high in both assertiveness and cooperativeness is", "o": ["Accommodating", "Avoiding", "Collaborating", "Competing"], "a": 2}, {"m": 0, "q": "Lewin's three-stage model of change consists of", "o": ["Awareness, Desire, Action", "Unfreezing, Changing, Refreezing", "Planning, Acting, Reviewing", "Forming, Storming, Norming"], "a": 1}, {"m": 1, "q": "Job analysis results in two documents:", "o": ["Job evaluation and job ranking", "Job design and job rotation", "Job description and job specification", "Offer letter and appointment order"], "a": 2}, {"m": 1, "q": "A job specification describes", "o": ["the qualifications and skills required of the job holder", "the duties and tasks of the job", "the pay scale of the job", "the working hours of the job"], "a": 0}, {"m": 1, "q": "Compared to personnel management, HRM is mainly", "o": ["proactive and strategic", "reactive and clerical", "concerned only with wages", "confined to record-keeping"], "a": 0}, {"m": 1, "q": "The first step in the human resource planning process is usually", "o": ["forecasting the demand for human resources", "conducting interviews", "fixing pay scales", "designing training programmes"], "a": 0}, {"m": 1, "q": "The Delphi technique of HR forecasting relies on", "o": ["trade union opinion", "iterative opinions of a panel of experts", "regression of past data", "ratio of sales to employees"], "a": 1}, {"m": 1, "q": "Markov analysis is used to forecast", "o": ["training costs", "internal supply of employees", "the external labour market", "wage levels"], "a": 1}, {"m": 1, "q": "Succession planning is", "o": ["planning retirement benefits", "recruiting from campuses", "reducing headcount", "identifying and developing people to fill key future positions"], "a": 3}, {"m": 1, "q": "Job enrichment involves", "o": ["periodic movement between jobs", "vertical loading of a job with more responsibility", "horizontal addition of similar tasks", "reducing job content"], "a": 1}, {"m": 1, "q": "Moving employees from one job to another periodically to reduce monotony is", "o": ["Job rotation", "Job enrichment", "Job evaluation", "Job enlargement"], "a": 0}, {"m": 1, "q": "Which of the following is an internal source of recruitment?", "o": ["Promotions and transfers", "Campus recruitment", "Employment exchanges", "Walk-ins"], "a": 0}, {"m": 1, "q": "Recruitment is called a 'positive' process, whereas selection is", "o": ["also a process of attracting candidates", "a 'negative' process of rejecting unsuitable candidates", "a process of training candidates", "a process of placing candidates"], "a": 1}, {"m": 1, "q": "Employer branding refers to", "o": ["an organisation's reputation as a desirable place to work", "its trade mark registration", "advertising its products", "its share price"], "a": 0}, {"m": 1, "q": "Reliability of a selection test means", "o": ["it is easy to administer", "it is low in cost", "it measures what it claims to measure", "consistency of results"], "a": 3}, {"m": 1, "q": "Validity of a selection test means", "o": ["it is legally approved", "it gives the same result every time", "the test measures what it is supposed to measure", "it is quick to administer"], "a": 2}, {"m": 1, "q": "An assessment centre uses", "o": ["only written tests", "a single interview", "multiple exercises and multiple assessors", "only reference checks"], "a": 2}, {"m": 1, "q": "Which test measures a person's potential to learn a skill?", "o": ["Interest test", "Aptitude test", "Achievement test", "Projective test"], "a": 1}, {"m": 1, "q": "A systematic introduction of new employees to the organisation is called", "o": ["Induction", "Appraisal", "Promotion", "Placement"], "a": 0}, {"m": 1, "q": "A manpower (skills) inventory is", "o": ["a store of raw materials", "a record of the skills and qualifications of existing employees", "a list of retired employees", "a list of vacancies"], "a": 1}, {"m": 1, "q": "Competency mapping is", "o": ["drawing the office layout", "fixing salary grades", "listing trade unions", "identifying the competencies required for jobs and roles"], "a": 3}, {"m": 1, "q": "'Headhunting' is a method of", "o": ["campus hiring of freshers", "advertising for clerical posts", "hiring through employment exchanges", "searching for and recruiting senior executives"], "a": 3}, {"m": 2, "q": "KRA stands for", "o": ["Key Resource Analysis", "Key Reward Allowances", "Key Result Areas", "Key Recruitment Areas"], "a": 2}, {"m": 2, "q": "Management by Objectives (MBO) was popularised by", "o": ["Peter Drucker", "Henri Fayol", "Frederick Herzberg", "Douglas McGregor"], "a": 0}, {"m": 2, "q": "Behaviourally Anchored Rating Scales (BARS) combine", "o": ["MBO with 360-degree feedback", "forced distribution with checklists", "graphic rating scales with critical incidents", "ranking with paired comparison"], "a": 2}, {"m": 2, "q": "In 360-degree feedback an employee is rated by", "o": ["only the immediate superior", "superiors, peers, subordinates and others around the person", "only the HR department", "only customers"], "a": 1}, {"m": 2, "q": "The Critical Incident Method records", "o": ["only the best performance", "specific examples of effective and ineffective behaviour", "annual sales figures", "all employees' attendance"], "a": 1}, {"m": 2, "q": "The 'halo effect' in appraisal means", "o": ["rating too harshly", "rating everybody average", "ratings on all traits are influenced by one favourable trait", "rating only recent performance"], "a": 2}, {"m": 2, "q": "Rating all employees around the average is called", "o": ["recency error", "contrast error", "central tendency error", "leniency error"], "a": 2}, {"m": 2, "q": "Which of the following is a comparative appraisal method?", "o": ["BARS", "Paired comparison", "Graphic rating scale", "Critical incident method"], "a": 1}, {"m": 2, "q": "The three levels of Training Needs Analysis are", "o": ["reaction, learning and behaviour", "organisational, task and individual", "input, process and output", "technical, human and conceptual"], "a": 1}, {"m": 2, "q": "Which of the following is an off-the-job training method?", "o": ["Job rotation", "Understudy", "Coaching by the supervisor", "Role playing"], "a": 3}, {"m": 2, "q": "Vestibule training", "o": ["is given after retirement", "is always online", "is given only at the actual workplace", "simulates the actual work in a separate training area"], "a": 3}, {"m": 2, "q": "Level 2 of Kirkpatrick's model evaluates", "o": ["Behaviour", "Reaction", "Results", "Learning"], "a": 3}, {"m": 2, "q": "Return on investment (ROI) as a fifth level of training evaluation was added by", "o": ["Jack Phillips", "Donald Kirkpatrick", "Peter Senge", "Edgar Schein"], "a": 0}, {"m": 2, "q": "Career anchors were proposed by", "o": ["John Holland", "Edgar Schein", "Donald Super", "Abraham Maslow"], "a": 1}, {"m": 2, "q": "Mentoring is best described as", "o": ["a disciplinary action", "a long-term developmental relationship with an experienced senior", "a short classroom lecture", "a type of appraisal rating"], "a": 1}, {"m": 2, "q": "Blended learning combines", "o": ["recruitment with induction", "online learning with face-to-face instruction", "job rotation with promotion", "lecture with examination"], "a": 1}, {"m": 2, "q": "High-potential employees (HiPos) are those who", "o": ["show the ability to rise to senior leadership roles", "are close to retirement", "are on probation", "are on contract"], "a": 0}, {"m": 2, "q": "Employee engagement mainly refers to", "o": ["number of hours worked", "emotional and intellectual commitment to the organisation", "salary paid", "absenteeism rate"], "a": 1}, {"m": 2, "q": "A Performance Improvement Plan (PIP)", "o": ["is a retirement scheme", "is a bonus scheme", "is a recruitment plan", "sets steps and timelines to help an underperformer improve"], "a": 3}, {"m": 2, "q": "KPIs are", "o": ["job descriptions", "statutory returns", "training schedules", "measurable values showing how effectively objectives are achieved"], "a": 3}, {"m": 3, "q": "Job evaluation is the process of", "o": ["measuring employee performance", "analysing employee grievances", "selecting candidates", "determining the relative worth of jobs"], "a": 3}, {"m": 3, "q": "Which of the following job evaluation methods is quantitative?", "o": ["Job ranking method", "Point rating method", "Job classification method", "Paired comparison of persons"], "a": 1}, {"m": 3, "q": "In the Point Rating Method, jobs are evaluated on", "o": ["employee seniority", "compensable factors with assigned points", "only market surveys", "only the job title"], "a": 1}, {"m": 3, "q": "The Factor Comparison Method was developed by", "o": ["Harrington Emerson", "Eugene J. Benge", "Henry Gantt", "Frederick Taylor"], "a": 1}, {"m": 3, "q": "Internal equity refers to", "o": ["pay compared with inflation", "pay compared with minimum wages", "fairness of pay among jobs within the organisation", "pay compared with competitors"], "a": 2}, {"m": 3, "q": "External equity is checked through", "o": ["salary benchmarking and wage surveys", "performance appraisal", "job ranking", "seniority lists"], "a": 0}, {"m": 3, "q": "A time rate system pays wages on the basis of", "o": ["profit earned", "units produced", "time worked", "sales achieved"], "a": 2}, {"m": 3, "q": "Taylor's differential piece-rate system pays", "o": ["a flat bonus", "the same rate to all workers", "a higher rate per piece to efficient workers", "only time wages"], "a": 2}, {"m": 3, "q": "Under the Halsey Premium Plan, the worker generally gets", "o": ["about 50 per cent of the time saved as bonus", "no bonus", "a penalty for time saved", "the entire time saved as bonus"], "a": 0}, {"m": 3, "q": "The Rowan Plan computes bonus on the basis of", "o": ["time saved as a proportion of time allowed", "units produced above standard", "profit of the company", "market share"], "a": 0}, {"m": 3, "q": "The Scanlon Plan is a", "o": ["pension plan", "individual piece-rate plan", "group incentive plan based on cost savings through suggestions", "health insurance scheme"], "a": 2}, {"m": 3, "q": "Profit sharing is", "o": ["payment of overtime", "distribution of a part of profits among employees", "fixed monthly pay", "payment of gratuity"], "a": 1}, {"m": 3, "q": "ESOP stands for", "o": ["Employee Service Outsourcing Plan", "Executive Savings and Opportunity Plan", "Employee Stock Option Plan", "Employee Salary Overview Plan"], "a": 2}, {"m": 3, "q": "Variable pay is", "o": ["provident fund", "dearness allowance", "pay linked to performance and not fixed", "basic salary"], "a": 2}, {"m": 3, "q": "Flexible (cafeteria) benefits allow employees to", "o": ["choose benefits from a menu within a budget", "receive only cash", "receive no benefits", "receive benefits chosen by the union"], "a": 0}, {"m": 3, "q": "Total rewards management includes", "o": ["only basic pay", "both monetary and non-monetary rewards", "only bonuses", "only statutory benefits"], "a": 1}, {"m": 3, "q": "Which of the following is a statutory benefit in India?", "o": ["Stock options", "Club membership", "Company car", "Provident fund"], "a": 3}, {"m": 3, "q": "Broadbanding means", "o": ["increasing the number of pay grades", "merging many narrow pay grades into a few wide bands", "cutting pay", "freezing pay"], "a": 1}, {"m": 3, "q": "'Equal pay for equal work' reflects", "o": ["pay freeze", "pay compression", "pay secrecy", "pay equity"], "a": 3}, {"m": 3, "q": "A wage differs from a salary in that wage is", "o": ["usually paid to workers on an hourly, daily or weekly basis", "paid only in kind", "paid yearly", "paid only to executives"], "a": 0}, {"m": 4, "q": "The Trade Unions Act, 1926 requires a minimum of how many members to apply for registration?", "o": ["5", "7", "20", "10"], "a": 1}, {"m": 4, "q": "Under the Payment of Bonus Act, 1965, the minimum bonus payable is", "o": ["12 per cent", "20 per cent", "10 per cent", "8.33 per cent"], "a": 3}, {"m": 4, "q": "Under the Payment of Bonus Act, 1965, the maximum bonus payable is", "o": ["8.33 per cent", "25 per cent", "20 per cent", "33 per cent"], "a": 2}, {"m": 4, "q": "Under the Payment of Gratuity Act, 1972, gratuity is paid at the rate of", "o": ["7 days' wages for each year", "one month's salary for every 2 years", "30 days' wages for each year", "15 days' wages for each completed year of service"], "a": 3}, {"m": 4, "q": "The Maternity Benefit Act, 1961 (as amended in 2017) gives how many weeks of paid leave for the first two children?", "o": ["30", "12", "20", "26"], "a": 3}, {"m": 4, "q": "Under the POSH Act, 2013, an Internal Committee must be set up at workplaces with", "o": ["5 or more employees", "10 or more employees", "100 or more employees", "50 or more employees"], "a": 1}, {"m": 4, "q": "The Factories Act, 1948 defines a factory as premises employing 10 or more workers with power, or", "o": ["100 or more workers", "20 or more workers without power", "50 or more workers", "5 or more workers"], "a": 1}, {"m": 4, "q": "Under the Factories Act, 1948, the maximum weekly working hours for an adult worker is", "o": ["60", "48", "40", "54"], "a": 1}, {"m": 4, "q": "Under the Industrial Disputes Act, 1947, 'lay-off' means", "o": ["permanent closure of the establishment", "termination on retirement", "termination for misconduct", "failure or inability of the employer to give employment due to reasons such as shortage of coal, power or raw materials"], "a": 3}, {"m": 4, "q": "Retrenchment compensation under the Industrial Disputes Act, 1947 is", "o": ["30 days' pay for each year", "one month's pay in all", "15 days' average pay for every completed year of service", "7 days' pay for each year"], "a": 2}, {"m": 4, "q": "An employee's contribution to the Provident Fund under the EPF Act, 1952 is", "o": ["8.33 per cent", "10 per cent", "15 per cent", "12 per cent of basic wages plus DA"], "a": 3}, {"m": 4, "q": "The Employees' State Insurance Act, 1948 provides", "o": ["only retirement pension", "only gratuity", "medical, sickness, maternity and disablement benefits", "only bonus"], "a": 2}, {"m": 4, "q": "The Contract Labour (Regulation and Abolition) Act, 1970 applies to establishments employing", "o": ["20 or more contract workers", "50 or more contract workers", "5 or more contract workers", "10 or more contract workers"], "a": 0}, {"m": 4, "q": "The Minimum Wages Act, 1948 provides for", "o": ["retirement benefits", "compensation for injury", "payment of bonus", "fixing minimum rates of wages for scheduled employments"], "a": 3}, {"m": 4, "q": "The Payment of Wages Act, 1936 mainly regulates", "o": ["timely payment of wages and deductions from wages", "safety measures", "working hours", "trade union registration"], "a": 0}, {"m": 4, "q": "Negotiation between employers and unions on wages and working conditions is", "o": ["Arbitration", "Collective bargaining", "Conciliation", "Lockout"], "a": 1}, {"m": 4, "q": "A binding settlement of a dispute by a neutral third party chosen by both sides is", "o": ["Arbitration", "Conciliation", "Collective bargaining", "Mediation"], "a": 0}, {"m": 4, "q": "Closing of a place of employment by the employer during a dispute is a", "o": ["Lockout", "Gherao", "Strike", "Picketing"], "a": 0}, {"m": 4, "q": "A domestic enquiry must follow the principles of", "o": ["time study", "collective bargaining", "job evaluation", "natural justice"], "a": 3}, {"m": 4, "q": "Which of the following is NOT one of the four Labour Codes?", "o": ["Code on Social Security", "Industrial Relations Code", "Code on Wages", "Code on Contract Labour Welfare"], "a": 3}, {"m": 5, "q": "Strategic HRM is mainly concerned with", "o": ["routine record keeping", "linking HR practices to the organisation's strategic objectives", "statutory compliance only", "payroll processing only"], "a": 1}, {"m": 5, "q": "Vertical alignment in SHRM means fit between", "o": ["HR strategy and business strategy", "employees' hobbies and jobs", "HR practices themselves", "two departments"], "a": 0}, {"m": 5, "q": "Horizontal (internal) alignment refers to", "o": ["alignment of salaries with inflation", "link with business strategy", "link with the external environment only", "coherence among the various HR practices"], "a": 3}, {"m": 5, "q": "The Balanced Scorecard was developed by", "o": ["Drucker and Taylor", "Kaplan and Norton", "Ulrich and Becker", "Porter and Barney"], "a": 1}, {"m": 5, "q": "Which of the following is NOT a perspective of the Balanced Scorecard?", "o": ["Financial", "Customer", "Learning and growth", "Political"], "a": 3}, {"m": 5, "q": "The HR Scorecard is associated with", "o": ["Kaplan and Norton", "Porter and Barney", "Schein and Super", "Becker, Huselid and Ulrich"], "a": 3}, {"m": 5, "q": "SWOT analysis examines internal strengths and weaknesses, and", "o": ["external opportunities and threats", "external wages and tariffs", "only competitors' prices", "internal wages and tax"], "a": 0}, {"m": 5, "q": "PESTEL analysis includes Political, Economic, Social, Technological, Legal and", "o": ["Employee factors", "Educational factors", "Ethical factors", "Environmental factors"], "a": 3}, {"m": 5, "q": "Which of the following is NOT part of Porter's Five Forces?", "o": ["Bargaining power of government", "Rivalry among existing competitors", "Threat of new entrants", "Threat of substitutes"], "a": 0}, {"m": 5, "q": "Value chain analysis was proposed by", "o": ["Peter Drucker", "Jay Barney", "Michael Porter", "Kurt Lewin"], "a": 2}, {"m": 5, "q": "In Porter's value chain, HRM is a", "o": ["marketing activity", "inbound logistics activity", "support activity", "primary activity"], "a": 2}, {"m": 5, "q": "VRIO stands for", "o": ["Value, Resource, Investment, Output", "Valuable, Real, Important, Organised", "Vital, Rare, Innovative, Open", "Valuable, Rare, Inimitable, Organised"], "a": 3}, {"m": 5, "q": "The VRIO framework is based on the", "o": ["Scientific Management view", "Contingency view", "Resource-Based View", "Human Relations view"], "a": 2}, {"m": 5, "q": "Which of the following is a 'hard' element of the McKinsey 7S framework?", "o": ["Style", "Shared values", "Skills", "Structure"], "a": 3}, {"m": 5, "q": "At the centre of the McKinsey 7S model is", "o": ["Shared values", "Staff", "Strategy", "Systems"], "a": 0}, {"m": 5, "q": "High-performance work systems typically involve", "o": ["strict hierarchy and low pay", "no training", "selective hiring, extensive training and employee involvement", "only piece-rate pay"], "a": 2}, {"m": 5, "q": "Ulrich's HR roles include", "o": ["leader, follower, observer and critic", "strategic partner, administrative expert, employee champion and change agent", "recruiter, trainer, payroll clerk and guard", "planner, controller, auditor and inspector"], "a": 1}, {"m": 5, "q": "Human capital theory is associated with", "o": ["Gary Becker", "Elton Mayo", "Michael Porter", "Henri Fayol"], "a": 0}, {"m": 5, "q": "Porter's generic strategies are cost leadership, differentiation and", "o": ["diversification", "retrenchment", "integration", "focus"], "a": 3}, {"m": 5, "q": "Miles and Snow's strategic types are Defender, Analyzer, Reactor and", "o": ["Planner", "Prospector", "Producer", "Pioneer"], "a": 1}, {"m": 6, "q": "HRIS stands for", "o": ["Human Resource Inventory Schedule", "Human Resource Information System", "Human Relations Information Service", "Human Resource Integration Strategy"], "a": 1}, {"m": 6, "q": "Analytics that answers 'What happened?' is", "o": ["Descriptive analytics", "Diagnostic analytics", "Predictive analytics", "Prescriptive analytics"], "a": 0}, {"m": 6, "q": "Analytics that answers 'Why did it happen?' is", "o": ["Diagnostic analytics", "Prescriptive analytics", "Predictive analytics", "Descriptive analytics"], "a": 0}, {"m": 6, "q": "Analytics that answers 'What should we do about it?' is", "o": ["Predictive analytics", "Descriptive analytics", "Prescriptive analytics", "Diagnostic analytics"], "a": 2}, {"m": 6, "q": "Attrition (turnover) rate is calculated as", "o": ["(Separations / Average number of employees) x 100", "(Absent days / Working days) x 100", "(Average employees / Separations) x 100", "(New hires / Separations) x 100"], "a": 0}, {"m": 6, "q": "Absenteeism rate is", "o": ["(Days lost through absence / Total scheduled workdays) x 100", "(Separations / Average employees) x 100", "(Offers accepted / Offers made) x 100", "(Hires / Applications) x 100"], "a": 0}, {"m": 6, "q": "'Time to fill' measures", "o": ["time taken to appraise", "hours worked per week", "the days taken to fill a vacancy", "time spent in training"], "a": 2}, {"m": 6, "q": "Cost per hire is", "o": ["training cost per head", "total recruitment cost divided by number of hires", "total payroll", "salary of one employee"], "a": 1}, {"m": 6, "q": "Employee Self-Service (ESS) allows employees to", "o": ["view payslips and apply for leave online", "approve the company budget", "appoint directors", "set the company strategy"], "a": 0}, {"m": 6, "q": "A Learning Management System (LMS) is used to", "o": ["process payroll", "manage vehicle fleets", "audit accounts", "deliver, track and manage training"], "a": 3}, {"m": 6, "q": "The measure of central tendency least affected by extreme values is the", "o": ["Standard deviation", "Range", "Mean", "Median"], "a": 3}, {"m": 6, "q": "Which of the following is a measure of dispersion?", "o": ["Median", "Mean", "Standard deviation", "Mode"], "a": 2}, {"m": 6, "q": "The correlation coefficient lies between", "o": ["0 and 1", "-100 and +100", "0 and 100", "-1 and +1"], "a": 3}, {"m": 6, "q": "Regression analysis is used to", "o": ["list employee names", "predict a dependent variable from one or more independent variables", "draw pie charts only", "tabulate frequencies only"], "a": 1}, {"m": 6, "q": "In hypothesis testing, the null hypothesis is rejected when", "o": ["the sample size is large", "the p-value is less than the significance level", "the p-value is greater than the significance level", "the mean equals the median"], "a": 1}, {"m": 6, "q": "An HR dashboard is", "o": ["a legal document", "a pay slip", "an appointment letter", "a visual display of key HR metrics"], "a": 3}, {"m": 6, "q": "Revenue per employee is an indicator of", "o": ["workforce productivity", "training need", "absenteeism", "grievance rate"], "a": 0}, {"m": 6, "q": "Offer acceptance rate is", "o": ["(Offers made / Offers accepted) x 100", "(Rejections / Interviews) x 100", "(Offers accepted / Offers made) x 100", "(Hires / Applications) x 100"], "a": 2}, {"m": 6, "q": "Which of the following is a statistical software popularly used in HR analytics?", "o": ["SPSS", "AutoCAD", "Premiere Pro", "Photoshop"], "a": 0}, {"m": 6, "q": "Cloud-based HR systems are typically delivered as", "o": ["standalone offline software only", "Software as a Service (SaaS)", "Hardware as a Service", "paper-based service"], "a": 1}, {"m": 7, "q": "Opportunity cost is", "o": ["the actual money spent", "the historical cost", "the value of the next best alternative forgone", "the sunk cost"], "a": 2}, {"m": 7, "q": "According to the law of demand, when price falls, quantity demanded", "o": ["rises, other things remaining constant", "always remains unchanged", "falls", "becomes zero"], "a": 0}, {"m": 7, "q": "If the price elasticity of demand is greater than 1, demand is", "o": ["perfectly inelastic", "elastic", "unitary elastic", "inelastic"], "a": 1}, {"m": 7, "q": "Marginal cost is", "o": ["fixed cost per unit", "the addition to total cost from producing one more unit", "cost of the first unit", "total cost divided by output"], "a": 1}, {"m": 7, "q": "Economies of scale mean", "o": ["fixed cost increases", "output falls as inputs rise", "average cost falls as output increases", "average cost rises as output increases"], "a": 2}, {"m": 7, "q": "Break-even point in units =", "o": ["Fixed cost x Contribution", "Total cost / Units sold", "Variable cost / Selling price", "Fixed cost / Contribution per unit"], "a": 3}, {"m": 7, "q": "Contribution equals", "o": ["Variable cost minus Fixed cost", "Sales minus Variable cost", "Sales minus Fixed cost", "Sales minus Total cost"], "a": 1}, {"m": 7, "q": "The accounting equation is", "o": ["Liabilities = Assets + Capital", "Assets = Liabilities + Capital", "Capital = Assets + Liabilities", "Assets = Liabilities - Capital"], "a": 1}, {"m": 7, "q": "According to the golden rule for nominal accounts,", "o": ["debit the receiver, credit the giver", "credit all expenses", "debit all expenses and losses, credit all incomes and gains", "debit what comes in, credit what goes out"], "a": 2}, {"m": 7, "q": "A trial balance is prepared to", "o": ["compute tax", "determine the financial position", "check the arithmetical accuracy of ledger postings", "prove the absence of all errors"], "a": 2}, {"m": 7, "q": "Under the straight line method, annual depreciation =", "o": ["(Cost - Scrap value) / Useful life", "Cost / Scrap value", "Cost x Rate on reducing balance", "(Cost + Scrap value) / Life"], "a": 0}, {"m": 7, "q": "The conventional ideal current ratio is", "o": ["1:2", "3:1", "1:1", "2:1"], "a": 3}, {"m": 7, "q": "The conventional ideal quick (acid-test) ratio is", "o": ["2:1", "3:1", "1:1", "1:2"], "a": 2}, {"m": 7, "q": "A cash flow statement classifies cash flows into", "o": ["operating, investing and financing activities", "fixed, variable and semi-variable", "revenue, capital and deferred", "assets, liabilities and equity"], "a": 0}, {"m": 7, "q": "Working capital =", "o": ["Fixed assets - Current liabilities", "Total assets - Total liabilities", "Current assets - Current liabilities", "Current assets + Current liabilities"], "a": 2}, {"m": 7, "q": "The principle that money today is worth more than the same money later is the", "o": ["going concern concept", "principle of conservatism", "law of diminishing returns", "time value of money"], "a": 3}, {"m": 7, "q": "A project is accepted under the NPV rule if NPV is", "o": ["negative", "greater than zero", "less than the payback period", "exactly one"], "a": 1}, {"m": 7, "q": "The Internal Rate of Return (IRR) is the discount rate at which", "o": ["NPV equals zero", "payback period is zero", "profit equals the cost of capital", "NPV is maximum"], "a": 0}, {"m": 7, "q": "The modern objective of financial management is", "o": ["wealth maximisation", "cost minimisation only", "profit maximisation only", "sales maximisation"], "a": 0}, {"m": 7, "q": "Capital structure refers to", "o": ["the number of shareholders", "the mix of debt and equity used to finance a firm", "the list of fixed assets", "the amount of working capital only"], "a": 1}, {"m": 8, "q": "In a symmetrical distribution such as the normal distribution,", "o": ["mean < median < mode", "mean = median = mode", "mean is always zero", "mean > median > mode"], "a": 1}, {"m": 8, "q": "Skewness measures", "o": ["asymmetry of a distribution", "the central value", "peakedness", "spread"], "a": 0}, {"m": 8, "q": "The Poisson distribution is used for", "o": ["continuous measurements", "events with three outcomes", "rare events occurring in a fixed interval", "normally distributed data"], "a": 2}, {"m": 8, "q": "In a Poisson distribution,", "o": ["mean is double the variance", "mean equals variance", "variance is zero", "mean equals median only"], "a": 1}, {"m": 8, "q": "In a Binomial distribution with n trials and probability p, the mean is", "o": ["np", "npq", "n/p", "p/n"], "a": 0}, {"m": 8, "q": "In a normal distribution, about what percentage of values lie within one standard deviation of the mean?", "o": ["99.7 per cent", "95 per cent", "50 per cent", "68 per cent"], "a": 3}, {"m": 8, "q": "The Central Limit Theorem states that the sampling distribution of the mean approaches", "o": ["a uniform distribution", "a normal distribution as the sample size increases", "a binomial distribution always", "a Poisson distribution always"], "a": 1}, {"m": 8, "q": "The t-test is mainly used when", "o": ["the data are categorical", "the sample is very large", "the sample is small and the population standard deviation is unknown", "comparing three or more means"], "a": 2}, {"m": 8, "q": "ANOVA is used to compare", "o": ["frequencies only", "the means of three or more groups", "two variances only", "two proportions only"], "a": 1}, {"m": 8, "q": "The F-test is used to compare", "o": ["two variances", "two medians", "two means", "two proportions only"], "a": 0}, {"m": 8, "q": "The Chi-square test is commonly used to test", "o": ["the correlation of two continuous variables", "association between categorical variables", "the mean of a small sample", "the equality of three means"], "a": 1}, {"m": 8, "q": "A Type I error is", "o": ["rejecting a true null hypothesis", "accepting a false null hypothesis", "accepting a true null hypothesis", "rejecting a false null hypothesis"], "a": 0}, {"m": 8, "q": "The Mann-Whitney U test is a", "o": ["test for goodness of fit only", "parametric test for paired data", "non-parametric test for two independent samples", "test for variances"], "a": 2}, {"m": 8, "q": "The graphical method of linear programming is practical for", "o": ["two decision variables", "only five variables", "only one variable", "any number of variables"], "a": 0}, {"m": 8, "q": "The Simplex method was developed by", "o": ["W. Edwards Deming", "Karl Pearson", "George Dantzig", "R.A. Fisher"], "a": 2}, {"m": 8, "q": "The critical path in a project network is", "o": ["the path with the most float", "the path with the lowest cost", "the longest path through the network", "the shortest path"], "a": 2}, {"m": 8, "q": "PERT expected time (te) =", "o": ["(4a + m + b) / 6", "(a + m + b) / 3", "(a + 4m + b) / 6", "(a + b) / 2"], "a": 2}, {"m": 8, "q": "Which of the following is a probability sampling method?", "o": ["Stratified random sampling", "Judgement sampling", "Convenience sampling", "Snowball sampling"], "a": 0}, {"m": 8, "q": "Exploratory research is conducted to", "o": ["test a causal hypothesis", "verify final results", "explore a problem when little is known about it", "describe market share only"], "a": 2}, {"m": 8, "q": "Cronbach's alpha is used to measure", "o": ["skewness", "reliability (internal consistency)", "sampling error", "validity"], "a": 1}, {"m": 9, "q": "The four Ps of the marketing mix are Product, Price, Place and", "o": ["Policy", "Promotion", "Profit", "People"], "a": 1}, {"m": 9, "q": "STP in marketing stands for", "o": ["Segmentation, Targeting, Positioning", "Strategy, Tactics, Planning", "Supply, Transport, Production", "Selling, Testing, Pricing"], "a": 0}, {"m": 9, "q": "The stages of the Product Life Cycle are", "o": ["birth, youth, age, death", "entry, profit, loss, exit", "introduction, growth, maturity, decline", "design, test, launch, exit"], "a": 2}, {"m": 9, "q": "'Marketing Myopia' was written by", "o": ["Philip Kotler", "Michael Porter", "Peter Drucker", "Theodore Levitt"], "a": 3}, {"m": 9, "q": "Customer Lifetime Value (CLV) is", "o": ["total sales in one day", "the price of one product", "the net value a customer brings over the entire relationship", "a customer's age"], "a": 2}, {"m": 9, "q": "Venture capital is generally provided to", "o": ["large listed banks", "high-growth start-ups in exchange for equity", "retired persons", "government departments"], "a": 1}, {"m": 9, "q": "Angel investors are", "o": ["stock exchanges", "government agencies", "wealthy individuals who invest in early-stage start-ups", "commercial banks"], "a": 2}, {"m": 9, "q": "Joseph Schumpeter described the entrepreneur as an", "o": ["passive investor", "pure wage earner", "innovator", "risk avoider"], "a": 2}, {"m": 9, "q": "Disruptive innovation was popularised by", "o": ["Michael Porter", "Clayton Christensen", "Henry Chesbrough", "Joseph Schumpeter"], "a": 1}, {"m": 9, "q": "ESG stands for", "o": ["Employment, Safety and Growth", "Environmental, Social and Governance", "Ethical, Sustainable and Global", "Economic, Social and Government"], "a": 1}, {"m": 9, "q": "Which of the following is an Intellectual Property Right?", "o": ["Patent", "Dividend", "Bond", "Debenture"], "a": 0}, {"m": 9, "q": "GNP = GDP +", "o": ["net factor income from abroad", "subsidies", "depreciation", "indirect taxes"], "a": 0}, {"m": 9, "q": "NNP = GNP minus", "o": ["depreciation", "subsidies", "indirect taxes", "net exports"], "a": 0}, {"m": 9, "q": "Monetary policy in India is formulated by the", "o": ["NITI Aayog", "Reserve Bank of India", "Ministry of Finance", "SEBI"], "a": 1}, {"m": 9, "q": "Fiscal policy deals with", "o": ["interest rates set by the central bank", "stock market regulation", "government taxation and expenditure", "foreign exchange reserves only"], "a": 2}, {"m": 9, "q": "SEBI regulates the", "o": ["securities (capital) market", "insurance sector", "commercial banking sector", "foreign trade"], "a": 0}, {"m": 9, "q": "GST was introduced in India on", "o": ["1 January 2018", "1 April 2016", "1 July 2017", "2 October 2015"], "a": 2}, {"m": 9, "q": "NITI Aayog replaced the", "o": ["Planning Commission", "Finance Commission", "Law Commission", "Election Commission"], "a": 0}, {"m": 9, "q": "Under Section 135 of the Companies Act, 2013, eligible companies must spend on CSR at least", "o": ["5 per cent of net profit", "10 per cent of net worth", "2 per cent of average net profit of the preceding three years", "1 per cent of turnover"], "a": 2}, {"m": 9, "q": "The Triple Bottom Line consists of", "o": ["Policy, Plan and Profit", "Product, Price and Place", "People, Planet and Profit", "People, Process and Performance"], "a": 2}];
+const L = ["A","B","C","D"];
+let S = null, tick = null;
+const $ = id => document.getElementById(id);
+function el(tag, cls, txt){ const e=document.createElement(tag); if(cls) e.className=cls; if(txt!==undefined) e.textContent=txt; return e; }
+function show(id){ ["start","test","result"].forEach(s => $(s).classList.toggle("hidden", s!==id)); $("hdrRight").classList.toggle("hidden", id!=="test"); window.scrollTo(0,0); }
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function fmt(s){ s=Math.max(0,s); const h=Math.floor(s/3600), m=Math.floor(s%3600/60), x=s%60; return (h?h+":":"")+String(m).padStart(2,"0")+":"+String(x).padStart(2,"0"); }
+
+// start screen
+(function(){
+  const sc=$("scope");
+  const a=el("option",null,"Full paper - all 200 questions"); a.value="all"; sc.appendChild(a);
+  MODS.forEach((m,i)=>{ const o=el("option",null,m+" (20 questions)"); o.value=i; sc.appendChild(o); });
+})();
+
+$("startBtn").onclick = () => {
+  const scope=$("scope").value;
+  let idx=Q.map((_,i)=>i).filter(i=>scope==="all"||Q[i].m===+scope);
+  if($("shuf").checked) shuffle(idx);
+  const timed=$("timed").value==="1";
+  S={idx,ans:{},mark:{},cur:0,neg:parseFloat($("neg").value),timed,total:Math.round(idx.length*45),end:0,done:false};
+  if(timed){ S.end=Date.now()+S.total*1000; }
+  clearInterval(tick);
+  $("timer").textContent = timed ? fmt(S.total) : "Untimed";
+  $("timer").classList.remove("low");
+  tick=setInterval(onTick,500); onTick();
+  show("test"); render();
+};
+function onTick(){
+  if(!S||S.done) return;
+  if(!S.timed){ return; }
+  const left=Math.ceil((S.end-Date.now())/1000);
+  $("timer").textContent=fmt(left);
+  $("timer").classList.toggle("low", left<=300);
+  if(left<=0) submit();
+}
+
+function render(){
+  const qi=S.idx[S.cur], q=Q[qi];
+  $("qno").textContent="Question "+(S.cur+1)+" of "+S.idx.length;
+  $("qmod").textContent=MODS[q.m];
+  $("qtext").textContent=q.q;
+  const box=$("opts"); box.innerHTML="";
+  q.o.forEach((t,k)=>{
+    const b=el("button","opt"+(S.ans[qi]===k?" sel":""));
+    b.appendChild(el("span","l",L[k])); b.appendChild(el("span",null,t));
+    b.onclick=()=>{ S.ans[qi]=k; render(); };
+    box.appendChild(b);
+  });
+  $("markBtn").textContent = S.mark[qi] ? "Unmark Review" : "Mark for Review";
+  $("prev").disabled = S.cur===0;
+  $("next").textContent = S.cur===S.idx.length-1 ? "Finish" : "Save & Next \u2192";
+  drawPalette();
+}
+function drawPalette(){
+  const p=$("pal"); p.innerHTML="";
+  let a=0,m=0;
+  S.idx.forEach((qi,i)=>{
+    const b=el("button",null,String(i+1));
+    if(S.ans[qi]!==undefined){ b.classList.add("ans"); a++; }
+    if(S.mark[qi]){ b.classList.add("mk"); m++; }
+    if(i===S.cur) b.classList.add("cur");
+    b.onclick=()=>{ S.cur=i; render(); };
+    p.appendChild(b);
+  });
+  $("counts").textContent="Answered: "+a+"  |  Not answered: "+(S.idx.length-a)+"  |  Marked: "+m;
+}
+$("prev").onclick=()=>{ if(S.cur>0){ S.cur--; render(); } };
+$("next").onclick=()=>{ if(S.cur<S.idx.length-1){ S.cur++; render(); } else openModal(); };
+$("clear").onclick=()=>{ delete S.ans[S.idx[S.cur]]; render(); };
+$("markBtn").onclick=()=>{ const qi=S.idx[S.cur]; if(S.mark[qi]) delete S.mark[qi]; else S.mark[qi]=true; render(); };
+$("hdrSubmit").onclick=openModal;
+
+function openModal(){
+  const n=S.idx.length, a=Object.keys(S.ans).length, m=Object.keys(S.mark).length;
+  $("mBody").innerHTML="";
+  const p=el("p",null,"Answered: "+a+" of "+n+". Not answered: "+(n-a)+". Marked for review: "+m+".");
+  const p2=el("p",null,"You cannot change answers after submitting.");
+  $("mBody").appendChild(p); $("mBody").appendChild(p2);
+  $("modal").classList.remove("hidden");
+}
+$("mNo").onclick=()=>$("modal").classList.add("hidden");
+$("mYes").onclick=()=>{ $("modal").classList.add("hidden"); submit(); };
+
+document.addEventListener("keydown",e=>{
+  if(!S||S.done||$("test").classList.contains("hidden")||!$("modal").classList.contains("hidden")) return;
+  const k=e.key.toLowerCase(); const qi=S.idx[S.cur];
+  let v=-1; if("abcd".includes(k)&&k.length===1) v="abcd".indexOf(k); else if("1234".includes(k)&&k.length===1) v=+k-1;
+  if(v>=0){ S.ans[qi]=v; render(); }
+  else if(e.key==="ArrowRight"&&S.cur<S.idx.length-1){ S.cur++; render(); }
+  else if(e.key==="ArrowLeft"&&S.cur>0){ S.cur--; render(); }
+});
+window.addEventListener("beforeunload",e=>{ if(S&&!S.done&&!$("test").classList.contains("hidden")){ e.preventDefault(); e.returnValue=""; } });
+
+function submit(){
+  if(!S||S.done) return;
+  S.done=true; clearInterval(tick);
+  let c=0,w=0,u=0; const per=MODS.map(()=>({c:0,w:0,u:0,t:0}));
+  S.idx.forEach(qi=>{
+    const q=Q[qi], a=S.ans[qi]; const r=per[q.m]; r.t++;
+    if(a===undefined){ u++; r.u++; } else if(a===q.a){ c++; r.c++; } else { w++; r.w++; }
+  });
+  const n=S.idx.length, score=c-w*S.neg;
+  const sc=Math.round(score*100)/100;
+  $("rScore").textContent=sc+" / "+n;
+  $("rPct").textContent=(Math.max(0,score)/n*100).toFixed(1)+"%"+(S.neg?" (after negative marking)":"");
+  const st=$("rStats"); st.innerHTML="";
+  [["Correct",c],["Wrong",w],["Unanswered",u]].forEach(([k,v])=>{ const d=el("div","stat"); d.appendChild(el("b",null,String(v))); d.appendChild(el("span",null,k)); st.appendChild(d); });
+  const tb=$("rTable"); tb.innerHTML="";
+  const hr=el("tr"); ["Module","Correct","Wrong","Skipped","Accuracy"].forEach((h,i)=>hr.appendChild(el("th",i>0&&i<4?"n":null,h))); tb.appendChild(hr);
+  per.forEach((r,i)=>{
+    if(!r.t) return;
+    const tr=el("tr"); tr.appendChild(el("td",null,MODS[i]));
+    [r.c,r.w,r.u].forEach(v=>tr.appendChild(el("td","n",String(v))));
+    const td=el("td"); const bar=el("div","bar"); const f=el("div"); f.style.width=Math.round(r.c/r.t*100)+"%"; bar.appendChild(f);
+    td.appendChild(el("div",null,Math.round(r.c/r.t*100)+"%")); td.appendChild(bar); tr.appendChild(td); tb.appendChild(tr);
+  });
+  const tabs=$("tabs"); tabs.innerHTML="";
+  [["all","All questions"],["c","Correct"],["w","Wrong"],["u","Unanswered"]].forEach(([k,t],i)=>{
+    const b=el("button",i===0?"on":null,t); b.onclick=()=>{ [...tabs.children].forEach(x=>x.classList.remove("on")); b.classList.add("on"); review(k); }; tabs.appendChild(b);
+  });
+  review("all"); show("result");
+}
+function review(f){
+  const box=$("review"); box.innerHTML="";
+  S.idx.forEach((qi,i)=>{
+    const q=Q[qi], a=S.ans[qi];
+    const stt = a===undefined ? "u" : (a===q.a ? "c" : "w");
+    if(f!=="all"&&f!==stt) return;
+    const c=el("div","card rq");
+    const meta=el("div","meta"); meta.appendChild(el("span",null,"Question "+(i+1)+" - "+MODS[q.m]));
+    meta.appendChild(el("span","st "+stt, stt==="c"?"Correct":stt==="w"?"Wrong":"Not answered")); c.appendChild(meta);
+    c.appendChild(el("div","qtext",q.q));
+    q.o.forEach((t,k)=>{
+      let cls="opt static"; if(k===q.a) cls+=" ok"; else if(k===a) cls+=" no";
+      const b=el("div",cls); b.appendChild(el("span","l",L[k])); 
+      let label=t; if(k===q.a) label+="  (correct answer)"; else if(k===a) label+="  (your answer)";
+      b.appendChild(el("span",null,label)); c.appendChild(b);
+    });
+    box.appendChild(c);
+  });
+  if(!box.children.length) box.appendChild(el("p",null,"Nothing to show here."));
+}
+$("retake").onclick=()=>{ S=null; show("start"); };
+</script>
+</body>
+</html>
